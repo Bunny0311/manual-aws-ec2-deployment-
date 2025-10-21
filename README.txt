@@ -27,7 +27,7 @@ The primary goal was to gain hands-on experience with core cloud and server admi
 
 The application has been successfully deployed and is accessible via the public IP of the EC2 instance.
 
-*   **Live URL:** **`http://YOUR_EC2_PUBLIC_IP_HERE`**
+*   **Live URL:** **`http://3.110.188.2`**
     *   **Note:** *This EC2 instance is for demonstration purposes and may be stopped to manage costs. If the link is inactive, please refer to the verification screenshots below.*
 
 ---
@@ -77,4 +77,5 @@ The following screenshots serve as evidence of the successful deployment process
 *   **Practical Cloud Skills:** Gained tangible experience in provisioning, configuring, and accessing a virtual server on a major cloud platform.
 *   **Importance of Network Security:** Understood the critical role of Security Groups in controlling network access. The application is inaccessible without the correct inbound rules.
 *   **Linux Command-Line Proficiency:** Became more comfortable with essential Linux commands for package management (`apt`), file system navigation (`cd`, `ls`), and service administration (`systemctl`).
+
 *   **The "Why" of Automation:** This entirely manual process is slow, requires direct server access, and is prone to human error. It clearly illustrates the immense value of automating this workflow with CI/CD pipelines, which is the logical next step.
