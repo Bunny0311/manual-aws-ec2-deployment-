@@ -103,7 +103,3 @@ This project is open source and available under the [MIT License](LICENSE).
 - AWS Documentation
 - Nginx Documentation
 - The web development community
-
-## ✨ Live Demo
-
-Access the live demo at: `[Your EC2 Instance Public IP or Domain]`
