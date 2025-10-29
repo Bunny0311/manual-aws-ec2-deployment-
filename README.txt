@@ -1,73 +1,105 @@
-# Project 1: Manual Deployment of a Web Application on AWS EC2
+# Manual AWS EC2 Deployment Project
 
-This project demonstrates the foundational DevOps practice of manually deploying a simple web application. I have used a sample HTML application and deployed it on an **AWS EC2 instance**, configured with an **Nginx** web server to make it accessible to the world.
+A simple project demonstrating the manual deployment of a web application on an AWS EC2 instance using Nginx. This project serves as a practical guide for deploying static web content using AWS infrastructure.
 
-*(This repository is a fork of a sample application used for the sole purpose of demonstrating and documenting the deployment process).*
+## 📋 Project Overview
 
----
+This project consists of a web application built with:
+- HTML (19.9%)
+- CSS (70.4%)
+- JavaScript (9.7%)
 
-## 🎯 Project Objective
+The application is configured to be deployed on an AWS EC2 instance using Nginx as the web server.
 
-The primary goal was to gain hands-on experience with core cloud and server administration tasks. This manual process serves as a critical baseline, highlighting the challenges and pain points that automated CI/CD pipelines (covered in subsequent projects) are designed to solve.
+## 🚀 Features
 
----
+- Step-by-step demonstration of manual EC2 deployment
+- Nginx server configuration
+- Static web application showcase
+- AWS infrastructure setup guidelines
 
-## 🛠️ Technologies & Tools Used
+## 🛠️ Prerequisites
 
-*   **Cloud Provider:** AWS (Amazon Web Services)
-*   **Compute Service:** EC2 (Elastic Compute Cloud) - Ubuntu Server 22.04
-*   **Web Server:** Nginx
-*   **Version Control:** Git & GitHub
-*   **Networking:** AWS Security Groups, VPC, SSH
-*   **Operating System:** Linux (Ubuntu)
+Before you begin, ensure you have:
+- An AWS account
+- Basic understanding of AWS EC2
+- Familiarity with Nginx
+- Basic knowledge of HTML, CSS, and JavaScript
 
----
+## 📦 Installation & Deployment Steps
 
-## ⚙️ Deployment Workflow
+1. **AWS EC2 Setup**
+   ```bash
+   # Clone this repository
+   git clone https://github.com/Bunny0311/manual-aws-ec2-deployment-
+   ```
 
-The deployment process followed these steps:
+2. **Launch EC2 Instance**
+   - Launch an EC2 instance in your AWS Console
+   - Choose an appropriate AMI (e.g., Amazon Linux 2 or Ubuntu)
+   - Configure security groups to allow HTTP (port 80) and SSH (port 22)
 
-1.  **Infrastructure Provisioning:**
-    *   Launched a `t2.micro` EC2 instance on AWS within a default VPC.
-    *   Created and attached a Security Group to the instance, configuring inbound rules to allow traffic on:
-        *   **Port 22 (SSH)** for secure remote access from my IP.
-        *   **Port 80 (HTTP)** for public web traffic.
+3. **Install Nginx**
+   ```bash
+   # For Ubuntu
+   sudo apt update
+   sudo apt install nginx
 
-2.  **Server Configuration:**
-    *   Connected to the EC2 instance's command line using SSH and the `.pem` key.
-    *   Updated the server's package manager (`sudo apt update`) and installed necessary software: Nginx web server (`sudo apt install nginx`) and Git (`sudo apt install git`).
+   # For Amazon Linux
+   sudo amazon-linux-extras install nginx1
+   ```
 
-3.  **Application Deployment:**
-    *   Navigated to the Nginx web root directory (`/var/www/html`).
-    *   Cloned this Git repository's application files into the directory using `sudo git clone .`.
-    *   Verified that Nginx was active and serving the `index.html` file.
+4. **Deploy Application**
+   - Copy the web application files to your EC2 instance
+   - Configure Nginx to serve your application
 
-4.  **Verification:**
-    *   Accessed the application by navigating to the EC2 instance's public IP address in a web browser to confirm a successful deployment.
+## ⚙️ Configuration
 
----
+### Nginx Configuration Example
+```nginx
+server {
+    listen 80;
+    server_name your_domain.com;
 
-## 📸 Verification Screenshots (Proof of Work)
+    root /path/to/your/application;
+    index index.html;
 
-The following screenshots serve as evidence of the successful deployment process.
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
 
-**1. AWS EC2 Instance Provisioned**
-...
-![EC2 Dashboard](screenshots/ec2-dashboard.png)
+## 🔒 Security Considerations
 
-**2. Nginx Service Status on Server**
-...
-![Nginx Status](screenshots/nginx-status.png)
+- Keep your EC2 instance updated
+- Use secure SSH keys for instance access
+- Configure AWS security groups properly
+- Implement HTTPS using SSL/TLS certificates
 
-**3. Final Deployed Website**
-...
-![Live Website](screenshots/live-website.png)
+## 🚦 Usage
 
-## 🧠 Key Learnings & Takeaways
+1. Access your application through your EC2 instance's public IP or domain
+2. Navigate through the web interface
+3. Monitor server logs for any issues:
+   ```bash
+   sudo tail -f /var/log/nginx/error.log
+   ```
 
-*   **Practical Cloud Skills:** Gained tangible experience in provisioning, configuring, and accessing a virtual server on a major cloud platform.
-*   **Importance of Network Security:** Understood the critical role of Security Groups in controlling network access. The application is inaccessible without the correct inbound rules.
-*   **Linux Command-Line Proficiency:** Became more comfortable with essential Linux commands for package management (`apt`), file system navigation (`cd`, `ls`), and service administration (`systemctl`).
+## 👥 Contributing
 
-*   **The "Why" of Automation:** This entirely manual process is slow, requires direct server access, and is prone to human error. It clearly illustrates the immense value of automating this workflow with CI/CD pipelines, which is the logical next step.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 📧 Contact
+
+- GitHub: [@Bunny0311](https://github.com/Bunny0311)
+
+## 🙏 Acknowledgments
+
+- AWS Documentation
+- Nginx Documentation
+- The web development community
